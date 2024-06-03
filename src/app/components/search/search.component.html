@@ -1,0 +1,12 @@
+
+<div>
+    <div>
+        <input type="text" [(ngModel)]="query.text" placeholder="pesquisar">
+        <button (click)="request()">Pesquisar</button>
+    </div>
+    <select [(ngModel)]="query.type" (change)="request()">
+        <option value="character">Character</option>
+        <option value="location">Location</option>
+        <option value="episode">Episode</option>
+    </select>
+</div>

@@ -1,0 +1,23 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+header{
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.subtitle{
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.base-details {
+    display: flex;
+    flex-direction: column;
+    font-family: monospace;
+}

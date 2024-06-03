@@ -1,0 +1,44 @@
+<div class="container">
+    <a href="./">Return</a>
+    <div>
+        <img [src]="info?.image" alt="" srcset="">
+    </div>
+    <header>
+        <span class="title">
+            {{info.name}}
+        </span>
+        <span class="subtitle">
+            {{info.type}} {{info.species}}
+        </span>
+    </header>
+    <div class="base-details">
+        @if(type == "character"){
+            <span>
+                Gender: {{info.gender}}
+            </span>
+            <span>
+                Origin: {{info?.origin?.name}}
+            </span>
+            <span>
+                Current location: {{info?.location?.name}}
+            </span>
+            <span>
+                Current status: {{info?.status}}
+            </span>
+        }
+        @if(type == "location"){
+            <span>
+                Dimension: {{info?.dimension}}
+            </span>
+        }
+        @if(type == "episode"){
+            <span>
+                {{info.episode}}
+            </span>
+            <span>
+                {{info.air_date}}
+            </span>
+        }
+    </div>
+
+</div>

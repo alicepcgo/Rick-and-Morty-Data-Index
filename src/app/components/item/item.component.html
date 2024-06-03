@@ -1,0 +1,42 @@
+<div class="item">
+    @if(info?.image){
+        <img [src]="info.image">
+    }
+    <div class="detail">
+        <div>
+            <span class="title">
+                {{info?.name}}
+            </span>
+            @if(info.dataType == "character"){
+                <span class="subtitle">
+                    {{info.type}} {{info.species}}
+                </span>
+                <span>
+                    Location: {{info.location.name}}
+                </span>
+                <span>
+                    Status: {{ info.status }}
+                </span>
+            }
+            @if(info.dataType == "episode"){
+                <span class="subtitle">
+                    {{info.episode}}
+                </span>
+                <span>
+                    Aired in: {{info.air_date}}
+                </span>
+            }
+            @if(info.dataType == "location"){
+                <span class="subtitle">
+                    {{info.type}}
+                </span>
+                <span>
+                    Dimension: {{info.dimension}}
+                </span>
+            }
+        </div>
+        <a [routerLink]="['/detail', info.dataType, info.id]">
+            Details
+        </a>
+    </div>
+</div>

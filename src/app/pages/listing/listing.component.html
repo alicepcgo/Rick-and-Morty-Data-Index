@@ -1,0 +1,13 @@
+<div>
+    <app-search (onSearch)="search($event)"></app-search>
+    <hr>
+    <code>
+        <span>{{items.length}}</span>
+    </code>
+    <div class="listing">
+        @for(item of items; track item.id){
+            <app-item [info]="item"/>
+        }
+    </div>
+    
+</div>

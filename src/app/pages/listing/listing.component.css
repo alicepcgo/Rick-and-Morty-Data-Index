@@ -1,0 +1,11 @@
+
+
+.listing {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.listing app-item{
+    border: solid 1px;
+}
