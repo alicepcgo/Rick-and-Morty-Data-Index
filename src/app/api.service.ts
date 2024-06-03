@@ -18,11 +18,14 @@ export class ApiService{
       });
     }
 
-    async search(type: String, name: String){
-      return (await this.api.get(`/${type}`, {params: {name: name}})).data.results.map((item: any) => {
-        console.log(item);        
-        return {dataType: type, ...item}
-      })
+    async search(type: String, name: String, page: Number = 1){
+      const {info, results} = (await this.api.get(`/${type}`, {params: {name: name, page}})).data
+      return {
+        info,
+        results: results.map((item: any) => {
+          return {dataType: type, ...item}
+        })
+      }
     }
 
     async detail(type: String, id: Number){

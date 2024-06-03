@@ -1,13 +1,13 @@
 .item{
     display: flex;
-    padding: 24px;
-    gap: 20px;
-    min-height: 100px;
+    padding: 8px;
+    gap: 8px;
 }
 
 .item img{
     flex: 1;
-    max-height: 200px;
+    height: 80px;
+    width: 80px;
 }
 
 .item .detail{

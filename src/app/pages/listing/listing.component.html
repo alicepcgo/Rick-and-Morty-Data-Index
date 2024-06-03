@@ -1,13 +1,13 @@
-<div>
-    <app-search (onSearch)="search($event)"></app-search>
+<div class="container">
+    <div class="search-container">
+        <app-search (onSearch)="search($event)"></app-search>
+        {{pageStep}}/
+        {{pageStepLimit}}
+    </div>
     <hr>
-    <code>
-        <span>{{items.length}}</span>
-    </code>
-    <div class="listing">
+    <div (scroll)="onWindowScroll($event)" class="listing">
         @for(item of items; track item.id){
             <app-item [info]="item"/>
         }
     </div>
-    
 </div>

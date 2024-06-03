@@ -1,9 +1,17 @@
-
+.search-container{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+}
 
 .listing {
+    max-height: 100vh;
+    margin-top: 10vh;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
+    overflow-y: scroll;
 }
 
 .listing app-item{
