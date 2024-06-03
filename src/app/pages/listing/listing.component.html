@@ -1,10 +1,7 @@
 <div class="container">
     <div class="search-container">
         <app-search (onSearch)="search($event)"></app-search>
-        {{pageStep}}/
-        {{pageStepLimit}}
     </div>
-    <hr>
     <div (scroll)="onWindowScroll($event)" class="listing">
         @for(item of items; track item.id){
             <app-item [info]="item"/>
