@@ -31,7 +31,7 @@ export class ListingComponent implements OnInit {
   async more(){
     this.pageStep += 1
     const { results } = await this.api.search(this.currentQuery.type, this.currentQuery.text, this.pageStep)
-    this.items = this.items.concat(results);
+    this.items = this.items.concat(results);    
   }
 
   onWindowScroll(event: any) {

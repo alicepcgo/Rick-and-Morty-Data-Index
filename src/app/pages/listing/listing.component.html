@@ -1,10 +1,21 @@
-<div class="container">
-    <div class="search-container">
-        <app-search (onSearch)="search($event)"></app-search>
+<div class="container h-100">
+    <div class="search-wrapper container row align-items-center  bg-white rounded-bottom z-1 h-md-a h-25 shadow p">
+        <div class="text-center">
+            <h1>Rick and Morty Data Index</h1>
+            <app-search (onSearch)="search($event)"></app-search>
+        </div>
     </div>
-    <div (scroll)="onWindowScroll($event)" class="listing">
+    <div class="h-25"></div>
+    <div (scroll)="onWindowScroll($event)" class="listing-wrapper row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 justify-content-between overflow-y-scroll h-75 pb-5 m-0 ">
         @for(item of items; track item.id){
             <app-item [info]="item"/>
+        }
+        @if(!items.length){
+            <div class="d-flex w-100 justify-content-center">
+                <span >
+                    No registers found.
+                </span>
+            </div>
         }
     </div>
 </div>

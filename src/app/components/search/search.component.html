@@ -1,12 +1,15 @@
-
-<div>
-    <div>
-        <input type="text" [(ngModel)]="query.text" placeholder="pesquisar">
-        <button (click)="request()">Pesquisar</button>
+<div class="row justify-content-center gap-3 vh-25">
+    <div class="col-sm-a col-lg-4 p-0">
+        <input [(ngModel)]="query.text" (keydown.enter)="request()" type="text" placeholder="Name" class="form-control">
     </div>
-    <select [(ngModel)]="query.type" (change)="request()">
-        <option value="character">Character</option>
-        <option value="location">Location</option>
-        <option value="episode">Episode</option>
-    </select>
+    <div class="col-sm-a col-lg-4 p-0">
+        <select [(ngModel)]="query.type" (change)="request()" class="form-select">
+            <option value="character" selected class="dropdown-item">Character</option>
+            <option value="location" class="dropdown-item">Location</option>
+            <option value="episode" class="dropdown-item">Episode</option>
+        </select>
+    </div>
+    <div class="col-sm-a col-lg-2 p-0">
+        <button (click)="request()" type="button" class="btn w-100 btn-primary ">Search</button>
+    </div>
 </div>

@@ -1,32 +1,24 @@
-<div class="item">
-    <div>
-        @if(info?.image){
-            <img [src]="info.image">
+<div class="card w-a mb-3">
+    @if(info?.image){
+        <img [src]="info.image" class="card-img-left">
+    }
+    <div class="card-body">
+        <h5 class="card-title">{{info?.name}}</h5>
+        @if(info.dataType == "character"){
+            <p class="card-text">
+                {{info.type}} {{info.type ? "-" : null}} {{info.species}}
+            </p>
         }
-    </div>
-    <div class="detail">
-        <div>
-            <span class="title">
-                {{info?.name}}
-            </span>
-            @if(info.dataType == "character"){
-                <span class="subtitle">
-                    {{info.type}} {{info.species}}
-                </span>
-            }
-            @if(info.dataType == "episode"){
-                <span class="subtitle">
-                    {{info.episode}}
-                </span>
-            }
-            @if(info.dataType == "location"){
-                <span class="subtitle">
-                    {{info.type}}
-                </span>
-            }
-        </div>
-        <a [routerLink]="['/detail', info.dataType, info.id]">
-            Details
-        </a>
+        @if(info.dataType == "episode"){
+            <p class="card-text">
+                {{info.episode}}
+            </p>
+        }
+        @if(info.dataType == "location"){
+            <p class="card-text">
+                {{info.type}}
+            </p>
+        }
+      <a [routerLink]="['/detail', info.dataType, info.id]" class="btn btn-primary">Details</a>
     </div>
 </div>

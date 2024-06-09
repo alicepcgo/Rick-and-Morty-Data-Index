@@ -31,4 +31,9 @@ export class ApiService{
     async detail(type: String, id: Number){
       return (await this.api.get(`/${type}/${id}`)).data
     }
+
+    async extras(type: any, ids: String){
+      const results = (await this.api.get(`/${type}/${ids}`)).data
+      return Array.isArray(results) ? results : [results]
+    }
 };  

@@ -1,19 +1,21 @@
-.search-container{
+.search-wrapper {
     position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: white;
 }
 
-.listing {
-    max-height: 100vh;
-    margin-top: 10vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    overflow-y: scroll;
+.start.search{
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.listing app-item{
-    border: solid 1px;
+.listing-wrapper {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.listing-wrapper ::-webkit-scrollbar {
+    display: none;
+}
+
+.start.listing-wrapper{
+    opacity: .2;
 }
