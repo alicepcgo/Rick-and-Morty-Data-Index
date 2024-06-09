@@ -1,27 +1,43 @@
-# Rmindex
+# Rick and Morty Data Index
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.2.
+Rick and Morty Data Index is a simple Angular application that uses Bootstrap to list and display details of items fetched from the [Rick and Morty API](https://rickandmortyapi.com). The application includes a mock login screen where the username and password can be any values.
 
-## Development server
+## Technologies Used
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Angular** 18.0.1
+- **Axios** 1.7.2
+- **Bootstrap** 5.3.3
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Mock Login**: A login screen where the username and password can be any values.
+- **Item Listing**: Lists characters, locations, and episodes fetched from the Rick and Morty API.
+- **Item Details**: Displays individual details of characters, locations, and episodes.
+- **Lazy Loading**: Asynchronous data loading for improved performance.
+- **Route Guard**: Simple authentication check using `localStorage` to protect routes.
 
-## Build
+## How to Run
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/rick-and-morty-data-index.git
+   cd rick-and-morty-data-index
+   ```
 
-## Running unit tests
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. Run the application:
+   ```sh
+   ng serve
+   ```
 
-## Running end-to-end tests
+4. Open your browser and navigate to:
+   ```
+   http://localhost:4200
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Made by AlicePCGO, 2024.
