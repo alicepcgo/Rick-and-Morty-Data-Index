@@ -1,22 +1,27 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+interface Query {
+  text: string | null;
+  type: string;
+}
+
 @Component({
   selector: 'app-search',
   standalone: true,
   imports: [FormsModule],
   templateUrl: './search.component.html',
-  styleUrl: './search.component.css'
+  styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
-  @Input() query = {
+  @Input() query: Query = {
     text: null,
     type: 'character'
-  }
+  };
 
-  @Output() onSearch = new EventEmitter();
+  @Output() onSearch: EventEmitter<Query> = new EventEmitter<Query>();
 
-  request(){
-    this.onSearch.emit(this.query)
+  request(): void {
+    this.onSearch.emit(this.query);
   }
 }

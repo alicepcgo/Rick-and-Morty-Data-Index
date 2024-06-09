@@ -1,46 +1,55 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ItemComponent } from '../../components/item/item.component';
 import { ApiService } from '../../api.service';
 import { SearchComponent } from '../../components/search/search.component';
+
+interface Query {
+  text: string | null;
+  type: string;
+}
 
 @Component({
   selector: 'app-listing',
   standalone: true,
   imports: [ItemComponent, SearchComponent],
   templateUrl: './listing.component.html',
-  styleUrl: './listing.component.css'
+  styleUrls: ['./listing.component.css']
 })
 export class ListingComponent implements OnInit {
   items: any[] = [];
-  
-  currentQuery: any = {text:null, type: 'character'};
+  currentQuery: Query = { text: null, type: 'character' };
   pageStep: number = 1;
-  pageStepLimit: number = 1
+  pageStepLimit: number = 1;
 
-  constructor(private api: ApiService){}
+  constructor(private api: ApiService) {}
 
-  async search(query: any){
-    this.currentQuery = query
-    this.pageStep = 1
+  async search(query: Query): Promise<void> {
+    this.currentQuery = query;
+    this.pageStep = 1;
     this.items = [];
-    const {info, results} = await this.api.search(query.type, query.text)
+    const { info, results } = await this.api.search(query.type, query.text ?? '', 1);
     this.items = results;
-    this.pageStepLimit = info.pages
+    this.pageStepLimit = info.pages;
   }
 
-  async more(){
-    this.pageStep += 1
-    const { results } = await this.api.search(this.currentQuery.type, this.currentQuery.text, this.pageStep)
-    this.items = this.items.concat(results);    
+  async more(): Promise<void> {
+    this.pageStep += 1;
+    const { results } = await this.api.search(this.currentQuery.type, this.currentQuery.text ?? '', this.pageStep);
+    this.items = this.items.concat(results);
   }
 
-  onWindowScroll(event: any) {
-    if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight && this.pageStep < this.pageStepLimit) {
-      this.more()
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight;
+
+    if (scrollTop + clientHeight >= scrollHeight && this.pageStep < this.pageStepLimit) {
+      this.more();
     }
   }
 
   ngOnInit(): void {
-    this.search({text:null, type:'character'});
+    this.search({ text: null, type: 'character' });
   }
 }

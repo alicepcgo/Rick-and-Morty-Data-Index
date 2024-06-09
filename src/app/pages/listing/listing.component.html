@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="h-25"></div>
-    <div (scroll)="onWindowScroll($event)" class="listing-wrapper row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 justify-content-between overflow-y-scroll h-75 pb-5 m-0 ">
+    <div (scroll)="onWindowScroll()" class="listing-wrapper row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 justify-content-between overflow-y-scroll h-75 pb-5 m-0 ">
         @for(item of items; track item.id){
             <app-item [info]="item"/>
         }

@@ -1,39 +1,55 @@
 import { Injectable } from "@angular/core";
-import axios, { AxiosInstance } from "axios";
+import axios, { AxiosInstance, AxiosResponse } from "axios";
 
+export interface Info {
+  count: number;
+  pages: number;
+  next: string;
+  prev: string;
+}
+
+export interface SearchResult<T> {
+  info: Info;
+  results: T[];
+}
+
+export interface Item {
+  dataType: string;
+}
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
-export class ApiService{
-    api: AxiosInstance;
-  
-    constructor() {
-      this.api = axios.create({
-        baseURL: 'https://rickandmortyapi.com/api',
-        timeout: 5000,
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      });
-    }
+export class ApiService {
+  api: AxiosInstance;
 
-    async search(type: String, name: String, page: Number = 1){
-      const {info, results} = (await this.api.get(`/${type}`, {params: {name: name, page}})).data
-      return {
-        info,
-        results: results.map((item: any) => {
-          return {dataType: type, ...item}
-        })
-      }
-    }
+  constructor() {
+    this.api = axios.create({
+      baseURL: 'https://rickandmortyapi.com/api',
+      timeout: 5000,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+  }
 
-    async detail(type: String, id: Number){
-      return (await this.api.get(`/${type}/${id}`)).data
-    }
+  async search(type: string, name: string, page: number = 1): Promise<SearchResult<Item>> {
+    const response: AxiosResponse<{ info: Info; results: any[] }> = await this.api.get(`/${type}`, { params: { name, page } });
+    const { info, results } = response.data;
+    return {
+      info,
+      results: results.map(item => ({ dataType: type, ...item }))
+    };
+  }
 
-    async extras(type: any, ids: String){
-      const results = (await this.api.get(`/${type}/${ids}`)).data
-      return Array.isArray(results) ? results : [results]
-    }
-};  
+  async detail(type: string, id: number): Promise<any> {
+    const response: AxiosResponse<any> = await this.api.get(`/${type}/${id}`);
+    return response.data;
+  }
+
+  async extras(type: string, ids: string): Promise<any[]> {
+    const response: AxiosResponse<any> = await this.api.get(`/${type}/${ids}`);
+    const results = response.data;
+    return Array.isArray(results) ? results : [results];
+  }
+}
