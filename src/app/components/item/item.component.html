@@ -4,21 +4,9 @@
     }
     <div class="card-body">
         <h5 class="card-title">{{info?.name}}</h5>
-        @if(info.dataType == "character"){
-            <p class="card-text">
-                {{info.type}} {{info.type ? "-" : null}} {{info.species}}
-            </p>
-        }
-        @if(info.dataType == "episode"){
-            <p class="card-text">
-                {{info.episode}}
-            </p>
-        }
-        @if(info.dataType == "location"){
-            <p class="card-text">
-                {{info.type}}
-            </p>
-        }
-      <a [routerLink]="['/detail', info.dataType, info.id]" class="btn btn-primary">Details</a>
+        <p class="card-text">
+            {{info.species || info.type || info.episode}}
+        </p>
+      <a [routerLink]="['/detail', info.dataType, info.id]" class="btn bg-green">Details</a>
     </div>
 </div>
