@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { ItemComponent } from '../../components/item/item.component';
 import { ApiService } from '../../api.service';
 import { SearchComponent } from '../../components/search/search.component';
+import { Router } from '@angular/router';
 
 interface Query {
   text: string | null;
@@ -21,7 +22,7 @@ export class ListingComponent implements OnInit {
   pageStep: number = 1;
   pageStepLimit: number = 1;
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private router: Router) {}
 
   async search(query: Query): Promise<void> {
     this.currentQuery = query;
@@ -48,6 +49,12 @@ export class ListingComponent implements OnInit {
       this.more();
     }
   }
+
+  logout(): void {
+    localStorage.removeItem('username')
+    this.router.navigate(['/login'])
+  }
+  
 
   ngOnInit(): void {
     this.search({ text: null, type: 'character' });

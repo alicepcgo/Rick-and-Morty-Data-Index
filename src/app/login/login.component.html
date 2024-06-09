@@ -1,0 +1,19 @@
+<div class="container login-container d-flex justify-content-center align-items-center " style="height: 100vh;">
+    <div class="bg-white p-3 rounded">
+        <h3>
+            Rick and Morty
+            Data Index
+        </h3>
+        <form (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password" placeholder="Enter your password" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+    </div>
+</div>
