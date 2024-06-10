@@ -13,7 +13,6 @@ Rick and Morty Data Index is a simple Angular application that uses Bootstrap to
 - **Mock Login**: A login screen where the username and password can be any values.
 - **Item Listing**: Lists characters, locations, and episodes fetched from the Rick and Morty API.
 - **Item Details**: Displays individual details of characters, locations, and episodes.
-- **Lazy Loading**: Asynchronous data loading for improved performance.
 - **Route Guard**: Simple authentication check using `localStorage` to protect routes.
 
 ## How to Run
