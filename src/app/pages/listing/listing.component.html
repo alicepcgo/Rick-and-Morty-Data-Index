@@ -1,8 +1,10 @@
 <div class="container vh-100">
-    <div class="search-wrapper container row align-items-center  bg-white rounded-bottom z-1 h-md-a h-25 shadow p">
+    <div class="search-wrapper container row bg-white rounded-bottom z-1 h-md-a h-25 shadow">
+        <div class="text-end pt-3">
+            <a [routerLink]="['/profile']">{{username}}</a>
+        </div>
         <div class="text-center">
             <h1>Rick and Morty Data Index</h1>
-            <a href="" (click)="logout()">Logout</a>
             <app-search (onSearch)="search($event)"></app-search>
         </div>
     </div>

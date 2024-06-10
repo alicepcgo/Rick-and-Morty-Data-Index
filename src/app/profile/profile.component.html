@@ -1,0 +1,17 @@
+<div class="container profile-container d-flex flex-column justify-content-between" style="height: 100vh;">
+    <app-toolbar></app-toolbar>
+    <div class="bg-white rounded-top h-50 p-3">
+        <h1>
+            Profile
+        </h1>
+        <p>
+            Username: <b>{{username}}</b>
+        </p>
+        <p>
+            E-mail: <b>{{email}}</b>
+        </p>
+        <div class="btn btn-warning" (click)="logout()">
+            Logout
+        </div>
+    </div>
+</div>
