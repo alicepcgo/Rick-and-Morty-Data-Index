@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
-  email: string = '';
+  username: string = '';
   password: string = '';
 
   constructor(private router: Router) {}
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    localStorage.setItem('username', this.email);
+    localStorage.setItem('username', this.username);
     this.router.navigate(['/']);
   }
 }

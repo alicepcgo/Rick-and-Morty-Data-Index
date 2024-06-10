@@ -2,7 +2,8 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { ItemComponent } from '../../components/item/item.component';
 import { ApiService } from '../../api.service';
 import { SearchComponent } from '../../components/search/search.component';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { ToolbarComponent } from '../../toolbar/toolbar.component';
 
 interface Query {
   text: string | null;
@@ -12,7 +13,7 @@ interface Query {
 @Component({
   selector: 'app-listing',
   standalone: true,
-  imports: [ItemComponent, SearchComponent],
+  imports: [RouterLink,ItemComponent, SearchComponent, ToolbarComponent],
   templateUrl: './listing.component.html',
   styleUrls: ['./listing.component.css']
 })
@@ -21,6 +22,7 @@ export class ListingComponent implements OnInit {
   currentQuery: Query = { text: null, type: 'character' };
   pageStep: number = 1;
   pageStepLimit: number = 1;
+  username: string|null = localStorage.getItem('username');
 
   constructor(private api: ApiService, private router: Router) {}
 
@@ -49,12 +51,6 @@ export class ListingComponent implements OnInit {
       this.more();
     }
   }
-
-  logout(): void {
-    localStorage.removeItem('username')
-    this.router.navigate(['/login'])
-  }
-  
 
   ngOnInit(): void {
     this.search({ text: null, type: 'character' });
